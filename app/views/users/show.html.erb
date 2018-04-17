@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Articles</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @user.articles.order(created_at: :desc).each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= link_to 'Show', article %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Comments</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @user.comments.order(created_at: :desc).each do |comment| %>
+    <tr>
+      <td><%= comment.message %></td>
+      <td><%= link_to 'Show', comment %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
